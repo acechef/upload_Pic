@@ -1,4 +1,4 @@
-"""uploadpic URL Configuration
+"""uploadpicture URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.8/topics/http/urls/
@@ -18,8 +18,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^$', 'goup.views.index'),
-    url(r'^a.html$', 'goup.views.a'),
-    url(r'^test.html$', 'goup.views.test'),
-    url(r'^UploadHandler.html$', 'goup.views.UploadHandler'),
     url(r'^admin/', include(admin.site.urls)),
 ]

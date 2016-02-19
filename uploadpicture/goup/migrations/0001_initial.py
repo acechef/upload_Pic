@@ -17,6 +17,8 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=30)),
                 ('email', models.EmailField(max_length=30)),
                 ('content', models.TextField()),
+                ('pic_name', models.CharField(max_length=30)),
+                ('pic_path', models.FileField(upload_to=b'./upload/')),
                 ('love_num', models.IntegerField(default=0)),
                 ('create_time', models.DateTimeField(auto_now_add=True)),
             ],
@@ -26,25 +28,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('ip_address', models.GenericIPAddressField()),
+                ('dream_id', models.IntegerField()),
                 ('create_time', models.DateTimeField(auto_now_add=True)),
             ],
-        ),
-        migrations.CreateModel(
-            name='Picture',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('pic_name', models.CharField(max_length=30)),
-                ('path', models.FileField(upload_to=b'./upload/')),
-            ],
-        ),
-        migrations.AddField(
-            model_name='dream',
-            name='ip',
-            field=models.ForeignKey(to='goup.IP'),
-        ),
-        migrations.AddField(
-            model_name='dream',
-            name='picture',
-            field=models.OneToOneField(to='goup.Picture'),
         ),
     ]
