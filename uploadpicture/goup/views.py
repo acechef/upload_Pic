@@ -38,3 +38,6 @@ def profile_upload(file):
         fp.close()  
         return (True,file_name) #change  
     return (False,file_name)   #change
+
+def jQueryFileUpload(request):
+    return render_to_response('jQueryFileUpload.html',locals())
