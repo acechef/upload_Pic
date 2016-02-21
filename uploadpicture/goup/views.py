@@ -12,26 +12,32 @@ def index(request):
 def a(request):
 	return render_to_response('a.html',locals())
 
-def test(request):
-	file = request.FILES.get("Filedata",None)
-	if file:  
-		result,new_name=profile_upload(file)  
-		if result:  
-			ret="1"  
-		else:  
-			ret="2" 
-	json={'ret':ret,'save_name':new_name}  
-	return HttpResponse(simplejson.dumps(json,ensure_ascii = False))
+# def test(request):
+#     file= request.FILES['file']
+#     if file:  
+#     	result,new_name=profile_upload(file)  
+#     	if result:  
+#     		ret="1"  
+#     	else:  
+#     		ret="2" 
+#     json={'ret':ret,'save_name':new_name}  
+#     return HttpResponse(simplejson.dumps(json,ensure_ascii = False))
 
+def test(request):
+    file= request.FILES['file']
+    # result,new_name=profile_upload(file)
+    result,new_name=profile_upload(file)
+    # print(file)
+    # print("okoiuu")
+    return HttpResponse("ok")
 def profile_upload(file):  
     '''''文件上传函数'''  
     if file:  
-        # path='/home/zjq/'+'upload' 
-        path=os.path.join(settings.MEDIA_ROOT,'upload')
-        #file_name=str(uuid.uuid1())+".jpg"  
+        path='/home/zjq/'+'upload' 
+        # path=os.path.join(settings.MEDIA_ROOT,'upload')
         file_name=file.name  
-        #fname = os.path.join(settings.MEDIA_ROOT,filename)  
-        path_file=os.path.join(path,file_name)  
+        path_file=os.path.join(path,file_name)
+        print(path_file)
         fp = open(path_file, 'wb')  
         for content in file.chunks():   
             fp.write(content)  
@@ -41,3 +47,6 @@ def profile_upload(file):
 
 def jQueryFileUpload(request):
     return render_to_response('jQueryFileUpload.html',locals())
+
+def baidu(request):
+    return render_to_response('baidu.html',locals())
