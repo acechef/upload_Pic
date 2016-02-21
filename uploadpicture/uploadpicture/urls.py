@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^$', 'goup.views.index'),
     url(r'^jQueryFileUpload$', 'goup.views.jQueryFileUpload'),
     url(r'^baidu$', 'goup.views.baidu'),
+    url(r'^picture$', 'goup.views.picture'),
     url(r'^test$', 'goup.views.test'),
     url(r'^admin/', include(admin.site.urls)),
 ]

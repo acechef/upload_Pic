@@ -34,7 +34,7 @@ def profile_upload(file):
     '''''文件上传函数'''  
     if file:  
         path='/home/zjq/'+'upload' 
-        # path=os.path.join(settings.MEDIA_ROOT,'upload')
+        # path=os.path.join(settings.MEDIA_ROOT,'')
         file_name=file.name  
         path_file=os.path.join(path,file_name)
         print(path_file)
@@ -50,3 +50,6 @@ def jQueryFileUpload(request):
 
 def baidu(request):
     return render_to_response('baidu.html',locals())
+
+def picture(request):
+    return render_to_response('picture.html',locals())
