@@ -7,6 +7,8 @@
     <link rel="stylesheet"  type="text/css"  href="{% static "css/bootstrap.min.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "css/webuploader.css" %}">
     <script type="text/javascript" src="{% static "js/webuploader.min.js" %}"></script> 
+    <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bootstrapValidator.min.js" %}"></script>
     <style type="text/css">
         .btns{
             margin-bottom: 20px;
@@ -32,33 +34,33 @@
                                 </div>
                             </div>
                         </div>
-                <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+                <form class="form-horizontal followdream" role="form" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="firstname" class="col-sm-2 control-label">姓名</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="firstname"
-                                   placeholder="请输入姓名">
+                                   name="username" placeholder="请输入姓名">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="email" class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="email"
-                                   placeholder="请输入email">
+                                   name="email" placeholder="请输入email">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="content" class="col-sm-2 control-label">姓名</label>
+                        <label for="content" class="col-sm-2 control-label">Want </label>
                         <div class="col-sm-10">
                 <textarea class="form-control" rows="3" id="content"
-                          placeholder="请输入一句话,一个目标或梦想"></textarea>
+                          name="want" placeholder="请输入一句话,一个目标或梦想"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="firstname" class="col-sm-2 control-label">验证码</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control" id="firstname"
-                                   placeholder="不区分大小写">
+                                   name="captcha" placeholder="不区分大小写">
                         </div>
                         <div class="col-sm-3">
                             <!-- <img src="{% static "css/validate.gif" %}">  -->
@@ -189,6 +191,7 @@
             });
         </script>
         <script type="text/javascript">
+            //换一张
             function changeImg(){
                 var myimg = document.getElementById("changeVCode");
                 now = new Date();
@@ -196,6 +199,61 @@
                 // myimg.src="{% static 'css/validate.gif' %}?code="+now.getTime();
                 myimg.src="getVCode?code="+now.getTime();
             }
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.followdream').bootstrapValidator({
+                    message: 'This value is not valid',
+                    feedbackIcons: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    fields: {
+                        username: {
+                            message: 'The username is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: '哥，留个名吧'
+                                },
+                                stringLength: {
+                                    min: 2,
+                                    max: 10,
+                                    message: '姓名不得少于2个或多于10个字符'
+                                }
+                            }
+                        },
+                        email: {
+                            validators: {
+                                notEmpty: {
+                                    message: '邮箱不为空'
+                                },
+                                emailAddress: {
+                                    message: '邮箱格式不正确'
+                                }
+                            }
+                        },
+                        want:{
+                            validators: {
+                                notEmpty: {
+                                    message: '不为空'
+                                },
+                                stringLength: {
+                                    min: 2,
+                                    message: '惜字如金'
+                                }
+                            }
+                        }
+                        // captcha: {
+                        //     validators:{
+                        //         callback: {
+                        //             message:'captcha error',
+                        //         }
+                        //     }
+                        // }
+                    }
+                });
+            });
         </script>
 </body>
 </html>
