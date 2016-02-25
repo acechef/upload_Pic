@@ -3,27 +3,17 @@ from django.http import HttpResponse
 from django.shortcuts import render,render_to_response
 import simplejson,os,time
 from django.conf import settings
+import yanzhengma
 
 def index(request):
-	# return HttpResponse(u"hsayudh!")
-	return render_to_response('form.html',locals())
-
-
-def a(request):
-	return render_to_response('a.html',locals())
-
-# def test(request):
-#     file= request.FILES['file']
-#     if file:  
-#     	result,new_name=profile_upload(file)  
-#     	if result:  
-#     		ret="1"  
-#     	else:  
-#     		ret="2" 
-#     json={'ret':ret,'save_name':new_name}  
-#     return HttpResponse(simplejson.dumps(json,ensure_ascii = False))
+    code_img = yanzhengma.create_validate_code()
+    code_img[0].save("./goup/static/css/validate.gif", "GIF")
+    return render_to_response('form.html',locals())
 
 def test(request):
+    '''
+    获得文件上传请求
+    '''
     file= request.FILES['file']
     result,new_name=profile_upload(file)
     if result:
@@ -32,7 +22,7 @@ def test(request):
         json={'flag':'no'}
     return HttpResponse(simplejson.dumps(json,ensure_ascii = False))
 def profile_upload(file):  
-    '''''文件上传函数'''  
+    '''文件上传函数'''  
     if file:  
         path='/home/zjq/'+'upload' 
         # path=os.path.join(settings.MEDIA_ROOT,'')
@@ -47,6 +37,14 @@ def profile_upload(file):
         fp.close()  
         return (True,file_name) #change  
     return (False,file_name)   #change
+
+def getVCode(request):
+    '''
+    点击换一张时生成新的验证码
+    '''
+    code_img = yanzhengma.create_validate_code()
+    code_img[0].save("./goup/static/css/validate.gif", "GIF")
+    return HttpResponse('ok')
 
 def jQueryFileUpload(request):
     return render_to_response('jQueryFileUpload.html',locals())
