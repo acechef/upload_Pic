@@ -46,13 +46,18 @@ def getVCode(request):
     code_img[0].save("./goup/static/css/validate.png", "PNG")
     image_data = open("./goup/static/css/validate.png","rb").read()
     response = HttpResponse(image_data, content_type="image/png")
+    #将验证码存储进session
+    request.session['vcode'] = code_img[1].lower()
     return response
+
+def getsession(request):
+    a=request.session.get('vcode',default=None)
+    return render_to_response('getsession.html',locals())
 
 def saveDream(request):
     '''
-    保存信息
+    保存dream信息
     '''
-
     return HttpResponse('ok')
 
 def jQueryFileUpload(request):
