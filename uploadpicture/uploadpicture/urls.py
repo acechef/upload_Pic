@@ -19,8 +19,8 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^$', 'goup.views.index'),
     url(r'^getVCode$', 'goup.views.getVCode'),
+    url(r'^saveDream$', 'goup.views.saveDream'),
 
-    
     url(r'^jQueryFileUpload$', 'goup.views.jQueryFileUpload'),
     url(r'^baidu$', 'goup.views.baidu'),
     url(r'^picture$', 'goup.views.picture'),

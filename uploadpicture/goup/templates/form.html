@@ -61,11 +61,11 @@
                                    placeholder="不区分大小写">
                         </div>
                         <div class="col-sm-3">
-                            <img src="{% static "css/validate.gif" %}"> 
-                            <!-- <img src=""> -->
+                            <!-- <img src="{% static "css/validate.gif" %}">  -->
+                            <img src="getVCode" id="changeVCode">
                         </div>
                         <div class="col-sm-2" style="text-align:center;">
-                            <a href="javascript:void(0);" id="changeVCode">换一张</a>
+                            <a href="javascript:void(0);" onclick="changeImg();">换一张</a>
                         </div>
                     </div>
                     <div class="form-group">
@@ -177,23 +177,24 @@
               $("#sub").click(function(){
                 
               });
-              $("#changeVCode").click(function(){
-                $.ajax({
-                    type: "POST",
-                    url: "getVCode",
-                    success: function(data){
-                        changeImg();
-                    }
-                });
-              });
+              // $("#changeVCode").click(function(){
+              //   $.ajax({
+              //       type: "POST",
+              //       url: "getVCode",
+              //       success: function(data){
+              //           changeImg();
+              //       }
+              //   });
+              // });
             });
         </script>
         <script type="text/javascript">
             function changeImg(){
                 var myimg = document.getElementById("changeVCode");
                 now = new Date();
-                alert(now.getTime());
-                myimg.src="{% static 'css/validate.gif' %}?code="+now.getTime();
+                // alert(now.getTime());
+                // myimg.src="{% static 'css/validate.gif' %}?code="+now.getTime();
+                myimg.src="getVCode?code="+now.getTime();
             }
         </script>
 </body>

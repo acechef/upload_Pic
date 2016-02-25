@@ -43,7 +43,16 @@ def getVCode(request):
     点击换一张时生成新的验证码
     '''
     code_img = yanzhengma.create_validate_code()
-    code_img[0].save("./goup/static/css/validate.gif", "GIF")
+    code_img[0].save("./goup/static/css/validate.png", "PNG")
+    image_data = open("./goup/static/css/validate.png","rb").read()
+    response = HttpResponse(image_data, content_type="image/png")
+    return response
+
+def saveDream(request):
+    '''
+    保存信息
+    '''
+
     return HttpResponse('ok')
 
 def jQueryFileUpload(request):
