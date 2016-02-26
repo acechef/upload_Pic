@@ -19,6 +19,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^$', 'goup.views.index'),
     url(r'^getVCode$', 'goup.views.getVCode'),
+    url(r'^verificeVCode$', 'goup.views.verificeVCode'),
     url(r'^saveDream$', 'goup.views.saveDream'),
     url(r'^getsession$', 'goup.views.getsession'),
 

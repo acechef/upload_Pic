@@ -58,9 +58,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="firstname" class="col-sm-2 control-label">验证码</label>
+                        <label for="vc" class="col-sm-2 control-label">验证码</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="firstname"
+                            <input type="text" class="form-control" id="vc"
                                    name="captcha" placeholder="不区分大小写">
                         </div>
                         <div class="col-sm-3">
@@ -194,10 +194,10 @@
         <script type="text/javascript">
             //换一张
             function changeImg(){
+                //清空验证码输入框
+                var vc =();
                 var myimg = document.getElementById("changeVCode");
                 now = new Date();
-                // alert(now.getTime());
-                // myimg.src="{% static 'css/validate.gif' %}?code="+now.getTime();
                 myimg.src="getVCode?code="+now.getTime();
             }
         </script>
@@ -244,14 +244,36 @@
                                     message: '惜字如金'
                                 }
                             }
+                        },
+                        captcha: {
+                            validators:{
+                                callback: {
+                                    message:'captcha error',
+                                    callback: function(value, validator) {
+                                        if(value.length==4){
+                                            // var vali=null;
+                                            // $.ajax({
+                                            //     url:"verificeVCode",
+                                            //     type:"POST",
+                                            //     data:{yourVCode:value},
+                                            //     dataType:"json",
+                                            //     success: function(data){
+                                            //         if(data['flag']==1){
+                                            //             vali=true;
+                                            //         }else{
+                                            //             vali=false; 
+                                            //         }
+                                            //     }
+                                            // });
+                                            // return vali;
+                                            return false;
+                                        }else{
+                                            return false;
+                                        }
+                                    }
+                                }
+                            }
                         }
-                        // captcha: {
-                        //     validators:{
-                        //         callback: {
-                        //             message:'captcha error',
-                        //         }
-                        //     }
-                        // }
                     }
                 });
             });
