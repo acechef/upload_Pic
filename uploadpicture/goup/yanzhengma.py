@@ -19,7 +19,7 @@ fontType="/usr/share/fonts/truetype/freefont/FreeSans.ttf"
 
 def create_validate_code(size=(120, 30),
                          chars=init_chars,
-                         img_type="GIF",
+                         img_type="PNG",
                          mode="RGB",
                          bg_color=(255, 255, 255),
                          fg_color=(0, 0, 255),

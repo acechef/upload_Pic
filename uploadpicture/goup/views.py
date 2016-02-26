@@ -7,7 +7,7 @@ import yanzhengma
 
 def index(request):
     code_img = yanzhengma.create_validate_code()
-    code_img[0].save("./goup/static/css/validate.gif", "GIF")
+    code_img[0].save("./goup/static/css/validate.png", "PNG")
     return render_to_response('form.html',locals())
 
 def test(request):
