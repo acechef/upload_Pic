@@ -195,7 +195,7 @@
             //换一张
             function changeImg(){
                 //清空验证码输入框
-                var vc =();
+                // var vc =();
                 var myimg = document.getElementById("changeVCode");
                 now = new Date();
                 myimg.src="getVCode?code="+now.getTime();
@@ -251,22 +251,22 @@
                                     message:'captcha error',
                                     callback: function(value, validator) {
                                         if(value.length==4){
-                                            // var vali=null;
-                                            // $.ajax({
-                                            //     url:"verificeVCode",
-                                            //     type:"POST",
-                                            //     data:{yourVCode:value},
-                                            //     dataType:"json",
-                                            //     success: function(data){
-                                            //         if(data['flag']==1){
-                                            //             vali=true;
-                                            //         }else{
-                                            //             vali=false; 
-                                            //         }
-                                            //     }
-                                            // });
-                                            // return vali;
-                                            // return false;
+                                            var vali=null;
+                                            $.ajax({
+                                                url:"verificeVCode",
+                                                async:false,
+                                                type:"POST",
+                                                data:{yourVCode:value},
+                                                dataType:"json",
+                                                success: function(data){
+                                                    if(data['flag']==1){
+                                                        vali=true;
+                                                    }else{
+                                                        vali=false; 
+                                                    }
+                                                }
+                                            });
+                                            return vali;
                                         }else{
                                             return false;
                                         }
