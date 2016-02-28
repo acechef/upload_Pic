@@ -1,4 +1,4 @@
-#coding:utf-8
+# coding:utf-8 
 from django.http import HttpResponse
 from django.shortcuts import render,render_to_response
 import simplejson,os,time
@@ -7,7 +7,7 @@ import yanzhengma
 
 def index(request):
     code_img = yanzhengma.create_validate_code()
-    code_img[0].save("./goup/static/css/validate.png", "PNG")
+    code_img[0].save("./myform/static/css/validate.png", "PNG")
     return render_to_response('form.html',locals())
 
 def test(request):
@@ -15,6 +15,7 @@ def test(request):
     获得文件上传请求
     '''
     file= request.FILES['file']
+    print(file)
     result,new_name=profile_upload(file)
     if result:
         json={'flag':'ok','pic_name':new_name}
@@ -25,8 +26,6 @@ def profile_upload(file):
     '''文件上传函数'''  
     if file:  
         path='/home/zjq/'+'upload' 
-        # path=os.path.join(settings.MEDIA_ROOT,'')
-        # file_name=file.name
         suffix=(file.name).split()[-1]
         file_name=str(int(time.time()))+suffix
         path_file=os.path.join(path,file_name)
@@ -43,8 +42,8 @@ def getVCode(request):
     点击换一张时生成新的验证码
     '''
     code_img = yanzhengma.create_validate_code()
-    code_img[0].save("./goup/static/css/validate.png", "PNG")
-    image_data = open("./goup/static/css/validate.png","rb").read()
+    code_img[0].save("./myform/static/css/validate.png", "PNG")
+    image_data = open("./myform/static/css/validate.png","rb").read()
     response = HttpResponse(image_data, content_type="image/png")
     #将验证码存储进session
     request.session['vcode'] = code_img[1].lower()
@@ -71,10 +70,6 @@ def verificeVCode(request):
     else:
         return HttpResponse("false")
 
-def getsession(request):
-    a=request.session.get('vcode',default=None)
-    return render_to_response('getsession.html',locals())
-
 def saveDream(request):
     '''
     保存dream信息
@@ -93,12 +88,3 @@ def saveDream(request):
     ip
     dream.save()
     return HttpResponse('ok')
-
-def jQueryFileUpload(request):
-    return render_to_response('jQueryFileUpload.html',locals())
-
-def baidu(request):
-    return render_to_response('baidu.html',locals())
-
-def picture(request):
-    return render_to_response('picture.html',locals())

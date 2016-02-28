@@ -1,4 +1,4 @@
-"""uploadpicture URL Configuration
+"""Form URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.8/topics/http/urls/
@@ -17,16 +17,10 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^$', 'goup.views.index'),
-    url(r'^getVCode$', 'goup.views.getVCode'),
-    url(r'^verificeVCode$', 'goup.views.verificeVCode'),
-    url(r'^saveDream$', 'goup.views.saveDream'),
-    
-    url(r'^getsession$', 'goup.views.getsession'),
-
-    url(r'^jQueryFileUpload$', 'goup.views.jQueryFileUpload'),
-    url(r'^baidu$', 'goup.views.baidu'),
-    url(r'^picture$', 'goup.views.picture'),
-    url(r'^test$', 'goup.views.test'),
+    url(r'^$', 'myform.views.index'),
+    url(r'^test$', 'myform.views.test'),
+    url(r'^getVCode$', 'myform.views.getVCode'),
+    url(r'^verificeVCode$', 'myform.views.verificeVCode'),
+    url(r'^saveDream$', 'myform.views.saveDream'),
     url(r'^admin/', include(admin.site.urls)),
 ]
