@@ -9,16 +9,22 @@
     <link rel="stylesheet" type="text/css" href="{% static "css/webuploader.css" %}">
     <script type="text/javascript" src="{% static "js/webuploader.min.js" %}"></script> 
     <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/bootstrapValidator.min.js" %}"></script>
+    <!--<script type="text/javascript" src="{% static "js/bootstrapValidator.min.js" %}"></script>-->
+    <!-- jquery validator    -->
+    <script type="text/javascript" src="{% static "js/jquery.validate.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/messages_zh.js" %}"></script>
+     <!-- jquery validator end -->
     <style type="text/css">
         .btns{
             margin-bottom: 20px;
+        }
+        .error{
+            color:red;
         }
     </style>
     <title>表单</title>
 </head>
 <body>
-    <!--<div style="width: 500px">-->
     <div class="container" style="margin-top: 150px">
         <div class="row">
             <div class="col-md-3"></div>
@@ -174,13 +180,13 @@
                 }
             });
         </script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-              $("#sub").click(function(){
+         <script type="text/javascript">
+        //     $(document).ready(function(){
+        //       $("#sub").click(function(){
                 
-              });
-            });
-        </script>
+        //       });
+        //     });
+        // </script>
         <script type="text/javascript">
             //换一张
             function changeImg(){
@@ -192,80 +198,61 @@
                 myimg.src="getVCode?code="+now.getTime();
             }
         </script>
+         <script type="text/javascript">
+        //     $(document).ready(function() {
+        //         $('.followdream').bootstrapValidator({
+        //             message: 'This value is not valid',
+        //             feedbackIcons: {
+        //                 valid: 'glyphicon glyphicon-ok',
+        //                 invalid: 'glyphicon glyphicon-remove',
+        //                 validating: 'glyphicon glyphicon-refresh'
+        //             },
+        //             fields: {
+        //                 username: {
+        //                     message: 'The username is not valid',
+        //                     validators: {
+        //                         notEmpty: {
+        //                             message: '哥，留个名吧'
+        //                         },
+        //                         stringLength: {
+        //                             min: 2,
+        //                             max: 10,
+        //                             message: '姓名不得少于2个或多于10个字符'
+        //                         }
+        //                     }
+        //                 }
+        //             }
+        //         });
+        //     });
+         </script>
         <script type="text/javascript">
-            $(document).ready(function() {
-                $('.followdream').bootstrapValidator({
-                    message: 'This value is not valid',
-                    feedbackIcons: {
-                        valid: 'glyphicon glyphicon-ok',
-                        invalid: 'glyphicon glyphicon-remove',
-                        validating: 'glyphicon glyphicon-refresh'
-                    },
-                    fields: {
-                        username: {
-                            message: 'The username is not valid',
-                            validators: {
-                                notEmpty: {
-                                    message: '哥，留个名吧'
-                                },
-                                stringLength: {
-                                    min: 2,
-                                    max: 10,
-                                    message: '姓名不得少于2个或多于10个字符'
-                                }
-                            }
-                        },
-                        email: {
-                            validators: {
-                                notEmpty: {
-                                    message: '邮箱不为空'
-                                },
-                                emailAddress: {
-                                    message: '邮箱格式不正确'
-                                }
-                            }
-                        },
-                        want:{
-                            validators: {
-                                notEmpty: {
-                                    message: '不为空'
-                                },
-                                stringLength: {
-                                    min: 2,
-                                    message: '惜字如金'
-                                }
-                            }
-                        },
-                        captcha: {
-                            validators:{
-                                callback: {
-                                    message:'captcha error',
-                                    callback: function(value, validator) {
-                                        if(value.length==4){
-                                            var vali=null;
-                                            $.ajax({
-                                                url:"verificeVCode",
-                                                async:false,
-                                                type:"POST",
-                                                data:{yourVCode:value},
-                                                dataType:"json",
-                                                success: function(data){
-                                                    if(data['flag']==1){
-                                                        vali=true;
-                                                    }else{
-                                                        vali=false; 
-                                                    }
-                                                }
-                                            });
-                                            return vali;
-                                        }else{
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
+            $(document).ready(function(){
+                 $(".followdream").validate({
+                    rules: {
+                      username: {
+                        required: true,
+                        minlength: 2,
+                        maxlength:10
+                      },
+                      email:{
+                        required: true,
+                        email: true
+                      },
+                      want:{
+                        required: true,
+                        maxlength:35
+                      },
+                      captcha:{
+                        required: true,
+                        minlength:4,
+                        remote:{
+                            url: "verificeVCode",
+                            type:"POST",
+                            dataType:"json",
+                            data:{yourVCode:$("#vc").val()}
                         }
-                    }
+                      }
+                  }
                 });
             });
         </script>

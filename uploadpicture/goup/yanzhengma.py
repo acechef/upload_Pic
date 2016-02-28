@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# coding:utf-8 
 #!/usr/bin/python
 '''
 Filename:yanzhengma.py
@@ -14,8 +14,8 @@ _letter_cases = "abcdefghjkmnpqrstuvwxy" # 小写字母，去除可能干扰的i
 _upper_cases = _letter_cases.upper() # 大写字母
 _numbers = ''.join(map(str, range(3, 10))) # 数字
 init_chars = ''.join((_letter_cases, _upper_cases, _numbers))
-fontType="/usr/share/fonts/truetype/freefont/FreeSans.ttf"
-# fontType="/usr/share/fonts/truetype/ubuntu-font-family/Ubuntu-M.ttf"
+# fontType="/usr/share/fonts/truetype/freefont/FreeSans.ttf"
+fontType="/usr/share/fonts/truetype/ubuntu-font-family/Ubuntu-M.ttf"
 
 def create_validate_code(size=(120, 30),
                          chars=init_chars,
