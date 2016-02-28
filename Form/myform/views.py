@@ -4,6 +4,7 @@ from django.shortcuts import render,render_to_response
 import simplejson,os,time
 from django.conf import settings
 import yanzhengma
+from myform.models import IP,Dream
 
 def index(request):
     code_img = yanzhengma.create_validate_code()
@@ -78,13 +79,20 @@ def saveDream(request):
     email=request.POST.get('email')
     content=request.POST.get('want')
     pic_name=request.POST.get('pic_name')
-    username=request.POST.get('username')
+    try:
+    	ip_address=request.META['HTTP_X_FORWARDED_FOR']
+    	ip_address=ip_address.split(",")[0]
+    except Exception, e:
+    	try:
+    		ip_address = request.META['REMOTE_ADDR']
+    	except Exception, e:
+    		ip_address=""
+    ip=IP.objects.create(ip_address=ip_address)
     dream=Dream()
-    ip=IP()
     dream.name=username
     dream.email=email
     dream.content=content
     dream.pic_name=pic_name
-    ip
+    dream.ip=ip
     dream.save()
     return HttpResponse('ok')

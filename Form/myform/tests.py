@@ -1,3 +1,7 @@
 from django.test import TestCase
 
-# Create your tests here.
+try:
+	lis=[0,1]
+	print lis[7]
+except Exception, e:
+	print "sajod"
