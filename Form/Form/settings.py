@@ -1,3 +1,4 @@
+# coding:utf-8
 """
 Django settings for Form project.
 
@@ -101,3 +102,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = False
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'simba_cc@163.com'
+EMAIL_HOST_PASSWORD = 'zjq008040141'
+DEFAULT_FROM_EMAIL = '大阿拉伯人<simba_cc@163.com>'
