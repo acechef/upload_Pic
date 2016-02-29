@@ -96,3 +96,7 @@ def saveDream(request):
     dream.ip=ip
     dream.save()
     return HttpResponse('ok')
+
+def followdream(request):
+    dreams=Dream.objects.order_by('-create_time')[:5]
+    return render_to_response('followdream.html',locals())

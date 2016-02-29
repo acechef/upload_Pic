@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load staticfiles %}
+    <link type="text/css" rel="stylesheet" href="{% static "css/followdream.css" %}">
+    <script type="text/javascript" src="{% static "js/jquery-1.9.1.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/followdream.js" %}"></script>
+    <title>Follow your dream</title>
+</head>
+<body>
+    <div class='card-holder'>
+        <div class='card-wrapper'>
+            <a href='#'>
+                <div class='card bg-03'>
+                    <span class='card-content'>Create a dream</span>
+                </div>
+            </a>
+        </div>
+        <div class='card-wrapper'>
+            <a href='#'>
+                <div class='card bg-04'>
+                    <span class='card-content'>Go my blog</span>
+                </div>
+            </a>
+        </div>
+        <div class='card-wrapper'>
+            <a href='#'>
+                <div class='card bg-05'>
+                    <span class='card-content'>About me</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+    <div id="main">
+        <div class="box">
+            <div class="pic">
+                <img src="{% static "upload/1.jpg"%}">
+                <div class="content">
+                    <!--sadnasdassaaasdddddddddddddddddddddddddddddddddddaaaa-->
+                    <!--<p>hwdvj撒不断加快</p>-->
+                    <!--<span class="dream">hwdvj撒不断加快</span>-->
+                    <div>hwdvj撒不断加快devsadh急啊色d变色保额极</div>
+                </div>
+                <div class="info">
+                    <div class="label">信息标签
+                        <div class="heart">
+                            <span class="love_num">10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="{% static "upload/2.jpg"%}">
+                <div class="content">
+                    <div>hwdvj撒不断加快devsadh急啊色d变色保额极</div>
+                </div>
+                <div class="info">
+                    <div class="label">信息标签
+                        <div class="heart">
+                            <span class="love_num">10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% for dr in dreams%}
+            <div class="box">
+            <div class="pic">
+                <img src="{% static "upload/{{dr.pic_name}}"  %}">
+                <div class="content">
+                    <div>{{dr.content}}</div>
+                </div>
+                <div class="info">
+                    <div class="label">{{dr.name}}{{dr.pic_name}}
+                        <div class="heart">
+                            <span class="love_num">{{dr.love_num}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</body>
+</html>

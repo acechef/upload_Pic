@@ -1,0 +1,141 @@
+a:link,
+a:hover,
+a:visited,
+a:active {
+    color: #fff;
+    text-decoration: none;
+}
+
+body{
+    background: none repeat scroll 0 0 #EEE8AA;
+    /*padding-top: 35px;*/
+}
+
+.card-holder {
+    z-index:1;
+    margin-top: 180px;
+    position: fixed;
+    width: 0px;
+    overflow: visible;
+}
+
+.card-wrapper {
+    display: inline-block;
+    float: right;
+    clear: both;
+}
+
+.card {
+    position: relative;
+    left: 32px;
+    padding: 16px 32px 16px 64px;
+    margin: 8px;
+    x-box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 8px 0 8px -8px rgba(0, 0, 0, 0.5);
+    background: #fff;
+    transition: all 0.3s ease-in-out 0.1s;
+}
+
+.card:hover {
+    position: relative;
+    left: 100%;
+    margin-left: -32px;
+    box-shadow:
+            0 -8px 8px -8px rgba(0, 0, 0, 0.5),
+            0 8px 8px -8px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+.card-content {
+    display: inline-block;
+    color: #fff;
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.bg-01 { background: #539770; }
+.bg-02 { background: #4B7D74; }
+.bg-03 { background: #8DC2BC; }
+.bg-04 { background: #EDD6B4; }
+.bg-05 { background: #BE7467; }
+.bg-06 { background: #E2AE63; }
+
+#main{
+    position: relative;
+}
+.box{
+    padding: 15px 0 0 15px;
+    float: left;
+}
+.pic{
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #cccccc;
+}
+.pic img{
+    width: 265px;
+    height: auto;
+}
+.content{
+    width: 265px;
+    height: auto;
+    font-family: 'Microsoft Yahei',sans-serif;
+    word-wrap:break-word ;/*文字超过div换行*/
+    margin-top: 5px;
+    padding-top: 3px;
+    border: 1px  #cccccc;
+    border-top-style: dashed;
+}
+.info{
+    width: 265px;
+    height: auto;
+    margin-top: 5px;
+    padding-top: 3px;
+    border: 1px  #cccccc;
+    /*border-top-style: dashed;*/
+}
+.label{
+    /*padding-left: 20px;*/
+    border: 2px  rgba(152,245,255,0.8);
+    border-radius: 5px;
+    margin: 0 auto;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bolder;
+    color: #2dcb70;
+}
+/*以下为心形div*/
+.love_num{
+    text-align:center;
+    margin:0 auto;
+}
+.heart{ cursor:pointer;width:40px;height:20px;position:relative; float: right;/* relative(相对定位) 对象不可层叠、不脱离文档流，参考自身静态位置通过 top,bottom,left,right 定位，并且可以通过z-index进行层次分级 */
+}
+/* after 伪元素在元素之前添加内容*/
+.heart:before{
+    content:" ";
+    border-radius:12.5px 12.5px 0 0;/* 正方形的内切圆的半径等于正方形边长的一半 */
+    width:10px; height:15px;/* 长方形 */
+    background:red;
+    -moz-transform: rotate(-45deg);/* 逆时针旋转45°*/
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    position:absolute;/* absolute(绝对定位) 脱离文档流，通过 top,bottom,left,right 定位 */
+    left:21px;}
+
+/* after 伪元素在元素之后添加内容*/
+.heart:after{
+    content:" ";
+    width:10px; height:15px;
+    background:red;
+    border-radius:12.5px 12.5px 0 0;
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    position:absolute;
+    left:25px;top:0px;
+}

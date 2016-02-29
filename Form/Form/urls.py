@@ -22,5 +22,7 @@ urlpatterns = [
     url(r'^getVCode$', 'myform.views.getVCode'),
     url(r'^verificeVCode$', 'myform.views.verificeVCode'),
     url(r'^saveDream$', 'myform.views.saveDream'),
+    url(r'^followdream$', 'myform.views.followdream'),
+    url(r'^moredream$', 'myform.views.moredream'),
     url(r'^admin/', include(admin.site.urls)),
 ]
