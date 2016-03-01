@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     url(r'^$', 'myform.views.index'),
@@ -25,4 +27,13 @@ urlpatterns = [
     url(r'^followdream$', 'myform.views.followdream'),
     url(r'^moredream$', 'myform.views.moredream'),
     url(r'^admin/', include(admin.site.urls)),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# 在django1.5中，上传图片的设置是这样的：
+# --------------------------------------------------------------------------------------------
+# 在models.py中，
+#      photo=models.ImageField(upload_to=settings.MEDIA_ROOT)
+# 在模板中
+# 首先{% load staticfiles %}   !注意，不用于1.3的static
+# 显示图片：   <img src="{{ obj.photo.url }}"/>   
+# django显示图片--->baidu

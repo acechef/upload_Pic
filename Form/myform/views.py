@@ -26,7 +26,7 @@ def test(request):
 def profile_upload(file):  
     '''文件上传函数'''  
     if file:  
-        path='/home/zjq/'+'upload' 
+        path=settings.MEDIA_ROOT 
         suffix=(file.name).split()[-1]
         file_name=str(int(time.time()))+suffix
         path_file=os.path.join(path,file_name)
