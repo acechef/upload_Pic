@@ -29,7 +29,8 @@ urlpatterns = [
     url(r'^moredream$', 'myform.views.moredream'),
     url(r'^pic$', 'myform.views.pic'),
     url(r'^admin/', include(admin.site.urls)),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^upload/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.MEDIA_ROOT,}),
+]
 
 # 在django1.5中，上传图片的设置是这样的：
 # --------------------------------------------------------------------------------------------

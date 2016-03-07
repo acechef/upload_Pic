@@ -103,7 +103,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_ROOT='/home/zjq/upload/'
-MEDIA_URL='/media/'
+MEDIA_URL='/upload/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = False

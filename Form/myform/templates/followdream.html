@@ -71,7 +71,8 @@
         {% for dr in dreams%}
             <div class="box">
             <div class="pic">
-                <img src="{% static "{{dr.pic_name}}"  %}">
+                <!-- <img src="{% static "{{dr.pic_name}}"  %}"> -->
+                <img src="http://127.0.0.1:8000/upload/{{dr.pic_name}} ">
                 <div class="content">
                     <div>{{dr.content}}</div>
                 </div>
