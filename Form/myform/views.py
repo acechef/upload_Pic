@@ -100,3 +100,6 @@ def saveDream(request):
 def followdream(request):
     dreams=Dream.objects.order_by('-create_time')[:5]
     return render_to_response('followdream.html',locals())
+
+def pic(request):
+    return render_to_response('pic.html',locals())

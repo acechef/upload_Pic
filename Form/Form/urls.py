@@ -1,3 +1,4 @@
+# coding:utf-8 
 """Form URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -26,6 +27,7 @@ urlpatterns = [
     url(r'^saveDream$', 'myform.views.saveDream'),
     url(r'^followdream$', 'myform.views.followdream'),
     url(r'^moredream$', 'myform.views.moredream'),
+    url(r'^pic$', 'myform.views.pic'),
     url(r'^admin/', include(admin.site.urls)),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
