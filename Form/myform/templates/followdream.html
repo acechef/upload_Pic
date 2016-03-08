@@ -6,6 +6,7 @@
     <link type="text/css" rel="stylesheet" href="{% static "css/followdream.css" %}">
     <script type="text/javascript" src="{% static "js/jquery-1.9.1.min.js" %}"></script>
     <script type="text/javascript" src="{% static "js/followdream.js" %}"></script>
+    <link rel="stylesheet"  type="text/css"  href="{% static "css/bootstrap.min.css" %}">
     <title>Follow your dream</title>
 </head>
 <body>
@@ -33,41 +34,7 @@
         </div>
     </div>
 
-
     <div id="main">
-        <div class="box">
-            <div class="pic">
-                <img src="{% static "upload/1.jpg"%}">
-                <div class="content">
-                    <!--sadnasdassaaasdddddddddddddddddddddddddddddddddddaaaa-->
-                    <!--<p>hwdvj撒不断加快</p>-->
-                    <!--<span class="dream">hwdvj撒不断加快</span>-->
-                    <div>hwdvj撒不断加快devsadh急啊色d变色保额极</div>
-                </div>
-                <div class="info">
-                    <div class="label">信息标签
-                        <div class="heart">
-                            <span class="love_num">10</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="box">
-            <div class="pic">
-                <img src="{% static "upload/2.jpg"%}">
-                <div class="content">
-                    <div>hwdvj撒不断加快devsadh急啊色d变色保额极</div>
-                </div>
-                <div class="info">
-                    <div class="label">信息标签
-                        <div class="heart">
-                            <span class="love_num">10</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         {% for dr in dreams%}
             <div class="box">
             <div class="pic">
@@ -77,10 +44,11 @@
                     <div>{{dr.content}}</div>
                 </div>
                 <div class="info">
-                    <div class="label">{{dr.name}}{{dr.pic_name}}
+                    <div class="label">{{dr.name}}
                         <div class="heart">
-                            <span class="love_num">{{dr.love_num}}</span>
+                            aaa<!-- <span class="love_num">{{dr.love_num}}</span> -->
                         </div>
+                            <span class="love_num">{{dr.love_num}}</span>
                     </div>
                 </div>
             </div>
@@ -88,4 +56,7 @@
         {%endfor%}
     </div>
 </body>
+<script type="text/javascript">
+    
+</script>
 </html>
