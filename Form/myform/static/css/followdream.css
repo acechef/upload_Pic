@@ -106,12 +106,30 @@ body{
     font-weight: bolder;
     color: #2dcb70;
 }
+.f_right{
+    float: right;
+}
 /*以下为心形div*/
 .love_num{
     text-align:center;
     float: right;
-    margin-right: 5px;
+    /*margin-right: 5px;*/
 }
 .heart{
-    float: right;
+    float: left;
+    width: 23px;
+    height: 20px;
+    margin-right: 5px;
+    background: url( "empty.png") no-repeat left top;
+    cursor: pointer;
+}
+.heart:hover{
+    background: url( "full.png") no-repeat left top;
+}
+.heartfull{
+    float: left;
+    width: 23px;
+    height: 20px;
+    margin-right: 5px;
+    background: url( "full.png") no-repeat left top;
 }
