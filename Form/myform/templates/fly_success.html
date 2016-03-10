@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load staticfiles %}
+    <link rel="icon" href="{% static "img/my_favicon.ico" %}" type="image/x-icon"/>
+    <script src="{% static "js/jquery-1.9.1.min.js" %}" type="text/javascript"></script>
+    <link rel="stylesheet"  type="text/css"  href="{% static "css/bootstrap.min.css" %}">
+     <link rel="stylesheet" type="text/css" href="{% static "css/myform.css" %}">
+    <title>Fly success</title>
+    <style type="text/css">
+        button{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="margin-top: 150px" >
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="well well-lg">
+                    发表成功，您会在当前，两星期，一个月...收到邮件，为你实现梦想，走上人生巅峰打鸡血。快去邮箱看看吧！
+                </div>
+                <div>
+                    <button type="button"  class="btn btn-primary" id="back">返回</button>
+                </div>
+            </div>
+           <div class="col-md-3"></div>
+        </div>
+    </div> 
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $("#back").click(function(){
+                window.location.href="followdream"; 
+          });
+        });
+    </script>
+</body>
+</html>

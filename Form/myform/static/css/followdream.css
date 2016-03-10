@@ -132,4 +132,5 @@ body{
     height: 20px;
     margin-right: 5px;
     background: url( "full.png") no-repeat left top;
+    cursor: pointer;
 }

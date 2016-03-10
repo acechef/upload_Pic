@@ -90,16 +90,31 @@ def saveDream(request):
     ip=IP.objects.create(ip_address=ip_address)
     dream=Dream()
     dream.name=username
-    dream.email=email
+    dream.email=emailHttpResponse("false")
     dream.content=content
     dream.pic_name=pic_name
     dream.ip=ip
     dream.save()
-    return HttpResponse('ok')
+    return HttpResponseRedirect('fly_success.html')
+
+def fly_success(request):
+    return render_to_response('fly_success.html')
 
 def followdream(request):
+    try:
+        ip_address=request.META['HTTP_X_FORWARDED_FOR']
+        ip_address=ip_address.split(",")[0]
+    except Exception, e:
+        try:
+            ip_address = request.META['REMOTE_ADDR']
+        except Exception, e:
+            ip_address=""
+    ip=ip_address
     dreams=Dream.objects.order_by('-create_time')[:5]
     return render_to_response('followdream.html',locals())
 
-def pic(request):
-    return render_to_response('pic.html',locals())
+def support_it(request):
+    dream_id=request.POST.get('dream_id')
+    ip=request.POST.get('ip')
+    #在ip表查询是否ip与id对应上的记录，若存在则删除记录;若不存在，则添加记录
+    return HttpResponse("false")

@@ -26,8 +26,9 @@ urlpatterns = [
     url(r'^verificeVCode$', 'myform.views.verificeVCode'),
     url(r'^saveDream$', 'myform.views.saveDream'),
     url(r'^followdream$', 'myform.views.followdream'),
+    url(r'^support_it$', 'myform.views.support_it'),
     url(r'^moredream$', 'myform.views.moredream'),
-    url(r'^pic$', 'myform.views.pic'),
+    url(r'^fly_success$', 'myform.views.fly_success'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^upload/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.MEDIA_ROOT,}),
 ]

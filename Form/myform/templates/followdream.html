@@ -46,19 +46,29 @@
                     <div class="label">{{dr.name}}
                         <div class="f_right">
                             <div class="heart"></div>
-                            <div class="love_num">{{dr.love_num}}</div>
+                            <div class="love_num" did="{{dr.id}}">{{dr.love_num}}</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         {%endfor%}
-        <!-- <a href="javascript:;" class="ht" title="support it"></a> -->
     </div>
 </body>
 <script type="text/javascript">
     $(document).ready(function(){
         $(".heart").click(function(){
+            var dream_id=$(this).next().attr("did");
+            var ip="{{ip}}";
+             $.ajax({
+                type: "POST",
+                url: "support_it",
+                data:{dream_id:dream_id,ip:ip}
+                dataType: "json",
+                success: function(data){
+                    alert("ok");
+                }
+             });
             $(this).removeClass("heart");
             $(this).addClass("heartfull");
         });
