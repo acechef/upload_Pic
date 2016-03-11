@@ -116,5 +116,9 @@ def followdream(request):
 def support_it(request):
     dream_id=request.POST.get('dream_id')
     ip=request.POST.get('ip')
+    is_exist=IP.objects.filter(id=dream_id,ip_address=ip)
     #在ip表查询是否ip与id对应上的记录，若存在则删除记录;若不存在，则添加记录
+    status=0
+    if is_exist:
+        status=1
     return HttpResponse("false")
