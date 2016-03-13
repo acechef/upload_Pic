@@ -1,5 +1,6 @@
 from django.db import models
 class IP(models.Model):
+	dream_id = models.IntegerField(default=0)
 	ip_address=models.GenericIPAddressField(protocol='both', unpack_ipv4=False)
 	create_time = models.DateTimeField(auto_now_add=True)
 	def __unicode__(self):

@@ -59,6 +59,7 @@
     $(document).ready(function(){
         $(".heart").click(function(){
             var dream_id=$(this).next().attr("did");
+            var dream_id=$(this).next().//get old_love_num
             var ip="{{ip}}";
              $.ajax({
                 type: "POST",

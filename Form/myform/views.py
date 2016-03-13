@@ -116,9 +116,29 @@ def followdream(request):
 def support_it(request):
     dream_id=request.POST.get('dream_id')
     ip=request.POST.get('ip')
+    old_love_num=request.POST.get('old_love_num')
     is_exist=IP.objects.filter(id=dream_id,ip_address=ip)
     #在ip表查询是否ip与id对应上的记录，若存在则删除记录;若不存在，则添加记录
     status=0
     if is_exist:
         status=1
+    if status==0:
+        #insert into IP tabel
+        ip_address=getIpAddress(request)
+        ip=IP.objects.create(dream_id=dream_id,ip_address=ip_address)
+        #update love_num
+    if status==1:
+        #do nothing
+    json={'status':status,}
     return HttpResponse("false")
+
+def getIpAddress(request):
+    try:
+        ip_address=request.META['HTTP_X_FORWARDED_FOR']
+        ip_address=ip_address.split(",")[0]
+    except Exception, e:
+        try:
+            ip_address = request.META['REMOTE_ADDR']
+        except Exception, e:
+            ip_address=""
+    return ip_address
