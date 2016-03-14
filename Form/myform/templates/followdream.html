@@ -59,19 +59,26 @@
     $(document).ready(function(){
         $(".heart").click(function(){
             var dream_id=$(this).next().attr("did");
-            var dream_id=$(this).next().//get old_love_num
-            var ip="{{ip}}";
+            var $old=$(this).next();
+            var old_love_num=$(this).next().html()//get old_love_num
+            var ip="196.168.2.185";
              $.ajax({
                 type: "POST",
                 url: "support_it",
-                data:{dream_id:dream_id,ip:ip}
+                data:{dream_id:dream_id,ip:ip,old_love_num:old_love_num},
                 dataType: "json",
                 success: function(data){
-                    alert("ok");
+                    if(data['status']==0){
+                        //love_num add one
+                        var new_love_num=parseInt(old_love_num)+1;
+                        $old.html(new_love_num);
+                        $(this).removeClass("heart");
+                        $(this).addClass("heartfull");
+                    }else{
+                        alert("you can not");
+                    }
                 }
              });
-            $(this).removeClass("heart");
-            $(this).addClass("heartfull");
         });
     });
 </script>

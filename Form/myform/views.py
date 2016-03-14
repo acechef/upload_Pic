@@ -117,20 +117,19 @@ def support_it(request):
     dream_id=request.POST.get('dream_id')
     ip=request.POST.get('ip')
     old_love_num=request.POST.get('old_love_num')
-    is_exist=IP.objects.filter(id=dream_id,ip_address=ip)
+    is_exist=IP.objects.filter(dream_id=dream_id,ip_address=ip)
     #在ip表查询是否ip与id对应上的记录，若存在则删除记录;若不存在，则添加记录
     status=0
     if is_exist:
         status=1
     if status==0:
         #insert into IP tabel
-        ip_address=getIpAddress(request)
-        ip=IP.objects.create(dream_id=dream_id,ip_address=ip_address)
+        # ip_address=getIpAddress(request)
+        ip=IP.objects.create(dream_id=dream_id,ip_address=ip)
         #update love_num
-    if status==1:
-        #do nothing
-    json={'status':status,}
-    return HttpResponse("false")
+        Dream.objects.filter(id=dream_id).update(love_num=(int(old_love_num)+1))
+    json={'status':status}
+    return HttpResponse(simplejson.dumps(json,ensure_ascii = False))
 
 def getIpAddress(request):
     try:
