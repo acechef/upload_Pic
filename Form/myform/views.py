@@ -1,15 +1,15 @@
 # coding:utf-8 
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render,render_to_response
 import simplejson,os,time
 from django.conf import settings
 import yanzhengma
 from myform.models import IP,Dream
 
-def index(request):
+def createdream(request):
     code_img = yanzhengma.create_validate_code()
     code_img[0].save("./myform/static/css/validate.png", "PNG")
-    return render_to_response('form.html',locals())
+    return render_to_response('createdream.html',locals())
 
 def test(request):
     '''
@@ -90,12 +90,12 @@ def saveDream(request):
     ip=IP.objects.create(ip_address=ip_address)
     dream=Dream()
     dream.name=username
-    dream.email=emailHttpResponse("false")
+    dream.email=email
     dream.content=content
     dream.pic_name=pic_name
     dream.ip=ip
     dream.save()
-    return HttpResponseRedirect('fly_success.html')
+    return HttpResponseRedirect('fly_success')
 
 def fly_success(request):
     return render_to_response('fly_success.html')
@@ -110,7 +110,7 @@ def followdream(request):
         except Exception, e:
             ip_address=""
     ip=ip_address
-    dreams=Dream.objects.order_by('-create_time')[:5]
+    dreams=Dream.objects.order_by('-create_time')[:10]
     return render_to_response('followdream.html',locals())
 
 def support_it(request):

@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    url(r'^$', 'myform.views.index'),
+    url(r'^createdream$', 'myform.views.createdream'),
     url(r'^test$', 'myform.views.test'),
     url(r'^getVCode$', 'myform.views.getVCode'),
     url(r'^verificeVCode$', 'myform.views.verificeVCode'),
