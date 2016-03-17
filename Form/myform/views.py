@@ -124,7 +124,6 @@ def support_it(request):
         status=1
     if status==0:
         #insert into IP tabel
-        # ip_address=getIpAddress(request)
         ip=IP.objects.create(dream_id=dream_id,ip_address=ip)
         #update love_num
         Dream.objects.filter(id=dream_id).update(love_num=(int(old_love_num)+1))

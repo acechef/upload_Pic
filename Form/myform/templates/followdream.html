@@ -47,7 +47,11 @@
                 <div class="info">
                     <div class="label">{{dr.name}}
                         <div class="f_right">
+                            {% ifequal dr.ip.ip_address ip%}
+                            <div class="heartfull"></div>
+                            {%else%}
                             <div class="heart"></div>
+                            {%endifequal%}
                             <div class="love_num" did="{{dr.id}}">{{dr.love_num}}</div>
                         </div>
                     </div>
@@ -60,10 +64,11 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $(".heart").click(function(){
+            var $th=$(this);
             var dream_id=$(this).next().attr("did");
             var $old=$(this).next();
             var old_love_num=$(this).next().html()//get old_love_num
-            var ip="196.168.2.185";
+            var ip="196.168.2.190";
              $.ajax({
                 type: "POST",
                 url: "support_it",
@@ -74,10 +79,12 @@
                         //love_num add one
                         var new_love_num=parseInt(old_love_num)+1;
                         $old.html(new_love_num);
-                        $(this).removeClass("heart");
-                        $(this).addClass("heartfull");
+                        $th.removeClass("heart");
+                        $th.addClass("heartfull");
                     }else{
-                        alert("you can not");
+                        alert("you already support it");
+                        $th.removeClass("heart");
+                        $th.addClass("heartfull");
                     }
                 }
              });
