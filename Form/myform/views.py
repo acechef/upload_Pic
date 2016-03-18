@@ -50,17 +50,6 @@ def getVCode(request):
     request.session['vcode'] = code_img[1].lower()
     return response
 
-# def verificeVCode(request):
-#     '''
-#     验证码校验BootstrapValidator
-#     '''
-#     yourVCode=request.POST.get('yourVCode')
-#     json_data={'flag':'0'}
-#     if(yourVCode.lower()==request.session.get('vcode',default=None)):
-#         json_data['flag']='1'
-#         print (simplejson.dumps(json_data,ensure_ascii = False))
-#     return HttpResponse(simplejson.dumps(json_data,ensure_ascii = False))
-
 def verificeVCode(request):
     '''
     验证码校验 Jquery validate
