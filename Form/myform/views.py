@@ -5,6 +5,7 @@ import simplejson,os,time
 from django.conf import settings
 import yanzhengma
 from myform.models import IP,Dream
+from django.core.mail import send_mail
 
 def createdream(request):
     code_img = yanzhengma.create_validate_code()
@@ -84,6 +85,10 @@ def saveDream(request):
     dream.pic_name=pic_name
     dream.ip=ip
     dream.save()
+    try:
+        send_mail('强哥提醒您','您在strong-ge.com上留下了想说的话，内容为:', settings.DEFAULT_FROM_EMAIL,[str(email)], fail_silently=False)
+    except Exception, e:
+        raise e
     return HttpResponseRedirect('fly_success')
 
 def fly_success(request):
